@@ -1,0 +1,48 @@
+%Creation/official update: 2017/04/14
+%This is the new analysis order following Pierre's suggestion that permuttations should be on the subject rather than on the average 
+
+1) Testing differences between groups
+
+	1.1) --LaunchCompareTopographies-- 
+
+		 Compares for each voxel/atom how much the map linked to this parcel ressembles the map of other participants. 
+	
+	 	  Note: the first version of the script used the whole partitions to compare groups. However, some partitions at low levels
+			span more than just the occipital lobe which led to problems when investigating differences only at the the level of
+			this lobe (for exemple, looking only at the Occ. Lobe, 2 participants might have really similar networks. However, in one 
+			participant, this network would span all of the frontal lobe too, leading to low score of similarity between them).
+			Thus, the second version of the script avoids this issue by masking analysis with the mask of voxel of interest. 
+			
+			Maxime's script particularities (for creator only):
+				Moreover, if data comes from graph theory results (no maps yet made), used LaunchMappPartitions to obtain the data for 
+				this step.
+
+	1.2 ) -- AverageDiCeGeneral --
+		This script will average dice scores first over a list of scales (inputs can be placed so that scale averaging does not take place), and 
+		then accross Participants. The latter step is necessary for statistical comparisions later on. 
+		
+		Basically gives you the average intra vs inter group similarity over a list of scales and subscales for each participant. 
+
+	1.3) Use CompareDiCe/CompareDiCePaired
+		The paired version should be used on dependent data (repeated measures). 
+		 
+
+	1.4)Use mapP/Qvalues to obtain a map of the results
+		
+
+
+
+
+2) Visualizing differences between consensus maps for each group
+
+	2.1) Use InStab2GroupStab
+		This will take individual stability maps from a single group and compute its group stability map.
+		
+		Note: This uses a personally modified script from what Pierre uses, niak_brick_stability_group_maxime.
+
+	2.2) Use a script to launch the mapping
+		Note: no particular script was written for this, so take this: 'LaunchMapping_Rest_onlyCBSCMixed' as a example on how to write
+		the script. 
+
+3) Visualize differences in grouping
+     Check out script, and take MakeAverageMaps. 
